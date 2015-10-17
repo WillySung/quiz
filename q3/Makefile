@@ -10,5 +10,12 @@ iterative: iterative.c
 recursive: recursive.c
 	$(CC) $(CFLAGS_common) -o $@ $@.c
 
+run: $(EXEC)
+	echo "echo 1 > /proc/sys/vm/drop_caches" | sudo sh
+	perf stat --repeat 5 -e cache-misses,cache-references,instructions,cycles ./recursive
+
+	echo "echo 1 > /proc/sys/vm/drop_caches" | sudo sh
+	perf stat --repeat 5 -e cache-misses,cache-references,instructions,cycles ./iterative
+	
 clean:
 	$(RM) $(EXEC) *.o perf.*
