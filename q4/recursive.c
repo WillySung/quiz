@@ -1,17 +1,15 @@
 /* FIXME: Implement! */
 #include <stdlib.h>
 #include <stdio.h>
-#include <limits.h>
+#include <limits.h> 
 
-int maxSubArray(int A[], int n)
-{
+int maxSubArray(int A[], int n) {
     return findMaxSub(A, 0, n-1, INT_MIN);
 }
 
-int findMaxSub(int A[], int left, int right, int tmax)
-{
+int findMaxSub(int A[], int left, int right, int tmax) {
     if(left > right) return INT_MIN;
-
+    
 
     int mid = left + (right - left) / 2;
     //得到子区间[left, mid - 1]最大值
