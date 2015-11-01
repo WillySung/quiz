@@ -6,6 +6,8 @@ typedef struct Node {
     struct Node* next;
 } ListNode;
 
+ListNode *reverseBetween( ListNode *head, int m, int n );
+
 ListNode *reverseBetween( ListNode *head, int m, int n )
 {
 	if ( m == n ) return head;
@@ -43,6 +45,7 @@ ListNode *reverseBetween( ListNode *head, int m, int n )
 
 	return head;
 }
+
 void print_list(ListNode *root) {
     while (root) {
         printf("%c ", root->data);
